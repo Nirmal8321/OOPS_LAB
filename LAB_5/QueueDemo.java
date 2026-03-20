@@ -37,26 +37,42 @@ public class QueueDemo implements QueueImpl {
 
     public static void main(String[] args) {
         QueueDemo q = new QueueDemo();
-        try {
-            q.insert(10);
-            q.insert(20);
-            q.insert(30);
-            q.display();
-            System.out.println("Deleted: " + q.delete());
-            q.display();
-            for (int i = 4; i <= 10; i++) q.insert(i * 10);
-            q.display();
-            q.insert(999); // overflow
-        } catch (QueueOverflowException e) {
-            System.out.println("Exception: " + e.getMessage());
-        } catch (QueueUnderflowException e) {
-            System.out.println("Exception: " + e.getMessage());
-        }
-        try {
-            QueueDemo q2 = new QueueDemo();
-            q2.delete(); // underflow
-        } catch (QueueUnderflowException e) {
-            System.out.println("Exception: " + e.getMessage());
-        }
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        int choice;
+
+        System.out.println("Queue Demo (Bus Stand Queue) - Max size: 10");
+        do {
+            System.out.println("\n1. Insert  2. Delete  3. Display  4. Exit");
+            System.out.print("Enter choice: ");
+            choice = sc.nextInt();
+
+            try {
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter integer to insert: ");
+                        int val = sc.nextInt();
+                        q.insert(val);
+                        System.out.println("Inserted: " + val);
+                        break;
+                    case 2:
+                        int deleted = q.delete();
+                        System.out.println("Deleted: " + deleted);
+                        break;
+                    case 3:
+                        q.display();
+                        break;
+                    case 4:
+                        System.out.println("Exiting...");
+                        break;
+                    default:
+                        System.out.println("Invalid choice!");
+                }
+            } catch (QueueOverflowException e) {
+                System.out.println("Exception: " + e.getMessage());
+            } catch (QueueUnderflowException e) {
+                System.out.println("Exception: " + e.getMessage());
+            }
+        } while (choice != 4);
+        sc.close();
     }
 }

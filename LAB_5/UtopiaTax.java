@@ -14,10 +14,20 @@ public class UtopiaTax {
     }
 
     public static void main(String[] args) {
-        double hours = 40;
-        double gross = hours * HOURLY_RATE;
-        System.out.println("Gross pay: $" + gross);
-        System.out.println("Tax (15%): $" + calculateTax(gross));
-        System.out.println("Net pay: $" + calculateNetPay(hours));
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        System.out.print("Enter hours worked: ");
+        double hours = sc.nextDouble();
+        
+        double grossPay = hours * HOURLY_RATE;
+        double tax = calculateTax(grossPay);
+        double netPay = calculateNetPay(hours);
+        
+        System.out.println("\nUtopia Tax Calculation:");
+        System.out.println("Hours worked: " + hours);
+        System.out.println("Hourly rate: $" + HOURLY_RATE);
+        System.out.println("Gross pay: $" + grossPay);
+        System.out.println("Tax (15%): $" + String.format("%.2f", tax));
+        System.out.println("Net pay: $" + String.format("%.2f", netPay));
+        sc.close();
     }
 }

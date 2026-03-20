@@ -19,25 +19,19 @@ public class HexCheck {
     }
 
     public static void main(String[] args) {
-        String num = "1A2F";
+        java.util.Scanner sc = new java.util.Scanner(System.in);
+        System.out.print("Enter a string to check if it's hexadecimal: ");
+        String num = sc.nextLine();
+        
         try {
             if (!isHex(num))
                 throw new NotHexadecimalException(num);
-            System.out.println(num + " is a valid hexadecimal number.");
+            System.out.println("\"" + num + "\" is a valid hexadecimal number.");
         } catch (NotHexadecimalException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Exception caught: " + e.getMessage());
         } finally {
             System.out.println("Ending the program");
-        }
-        num = "1G2F";
-        try {
-            if (!isHex(num))
-                throw new NotHexadecimalException(num);
-            System.out.println(num + " is valid.");
-        } catch (NotHexadecimalException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            System.out.println("Ending the program");
+            sc.close();
         }
     }
 }

@@ -3,7 +3,7 @@
 
 import java.util.Scanner;
 
-public class DailyDrivingCost {
+class DailyDrivingCost {
     public static void main(String[] args) {
         try (Scanner input = new Scanner(System.in)) {
             System.out.print("Enter total miles driven per day: ");
