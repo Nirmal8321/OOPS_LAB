@@ -19,5 +19,6 @@ class q3{
         String h = sc.nextLine();
         boolean a =RS.stringreverse(h);
         System.out.println(a);
+        sc.close();
     }
 }
